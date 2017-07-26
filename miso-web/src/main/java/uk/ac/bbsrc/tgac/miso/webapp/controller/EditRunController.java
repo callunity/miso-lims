@@ -66,6 +66,7 @@ import uk.ac.bbsrc.tgac.miso.service.PlatformService;
 import uk.ac.bbsrc.tgac.miso.service.SequencerReferenceService;
 import uk.ac.bbsrc.tgac.miso.service.SequencingParametersService;
 import uk.ac.bbsrc.tgac.miso.service.impl.RunService;
+import uk.ac.bbsrc.tgac.miso.webapp.service.statsdb.StatsDbSource;
 import uk.ac.bbsrc.tgac.miso.webapp.util.JsonArrayCollector;
 import uk.ac.bbsrc.tgac.miso.webapp.util.RunMetricsSource;
 
@@ -83,7 +84,7 @@ public class EditRunController {
    * @return
    */
   public Stream<RunMetricsSource> getSources() {
-    return Stream.of(Run::getMetrics);
+    return Stream.of(Run::getMetrics, StatsDbSource.INSTANCE);
   }
 
   @Autowired
